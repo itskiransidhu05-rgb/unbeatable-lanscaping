@@ -29,16 +29,41 @@ export function Contact() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setIsSubmitting(true)
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1000))
-    setIsSubmitting(false)
-    setIsSubmitted(true)
+
+    // Form data nikalne ka asaan tarika
+    const formData = new FormData(e.currentTarget);
+    const data = {
+      firstName: formData.get('firstName'),
+      lastName: formData.get('lastName'),
+      phone: formData.get('phone'),
+      email: formData.get('email'),
+      message: formData.get('message'),
+    };
+
+    try {
+      const response = await fetch('/api/send', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        setIsSubmitted(true);
+      } else {
+        alert("Oops! Something went wrong. Please try again.");
+      }
+    } catch (error) {
+      alert("Network error. Check your internet connection.");
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   return (
     <section id="contact" className="py-20 lg:py-28 bg-muted">
       <div className="container mx-auto px-4 lg:px-8">
-        {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <p className="text-primary font-semibold mb-3 uppercase tracking-wider text-sm">
             Contact Us
@@ -47,25 +72,16 @@ export function Contact() {
             Ready to Get Started?
           </h2>
           <p className="text-muted-foreground text-lg leading-relaxed">
-            Contact us today for a free consultation and estimate. We're here to help bring your vision to life.
+            Contact us today for a free consultation and estimate.
           </p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12 items-start">
-          {/* Contact Info Side */}
           <div className="flex flex-col h-full">
             <h3 className="text-2xl font-bold text-foreground mb-6">Get in Touch</h3>
-            <p className="text-muted-foreground mb-8 leading-relaxed">
-              Have questions or ready to start your project? Reach out to us through any of the channels below, or fill out the form and we'll get back to you within 24 hours.
-            </p>
-
-            {/* Vertical Stacked Cards */}
             <div className="grid grid-cols-1 gap-6">
               {contactInfo.map((info, index) => (
-                <Card
-                  key={index}
-                  className="bg-card border-border hover:border-primary/50 transition-colors shadow-sm"
-                >
+                <Card key={index} className="bg-card border-border hover:border-primary/50 transition-colors shadow-sm">
                   <CardContent className="p-6">
                     <div className="flex items-center gap-5">
                       <div className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
@@ -73,10 +89,7 @@ export function Contact() {
                       </div>
                       <div className="min-w-0 flex-1">
                         <p className="font-bold text-foreground text-lg mb-1">{info.title}</p>
-                        <a
-                          href={info.href}
-                          className="text-muted-foreground hover:text-primary transition-colors block break-all leading-snug"
-                        >
+                        <a href={info.href} className="text-muted-foreground hover:text-primary transition-colors block break-all leading-snug">
                           {info.value}
                         </a>
                       </div>
@@ -87,7 +100,6 @@ export function Contact() {
             </div>
           </div>
 
-          {/* Contact Form Side */}
           <Card className="bg-card border-border shadow-lg">
             <CardContent className="p-8">
               {isSubmitted ? (
@@ -96,14 +108,8 @@ export function Contact() {
                     <CheckCircle2 className="h-8 w-8 text-primary" />
                   </div>
                   <h3 className="text-2xl font-bold text-foreground mb-3">Thank You!</h3>
-                  <p className="text-muted-foreground mb-6">
-                    Your message has been received. We'll get back to you within 24 hours.
-                  </p>
-                  <Button
-                    variant="outline"
-                    onClick={() => setIsSubmitted(false)}
-                    className="border-border text-foreground hover:bg-muted"
-                  >
+                  <p className="text-muted-foreground mb-6">Your message has been received.</p>
+                  <Button variant="outline" onClick={() => setIsSubmitted(false)}>
                     Send Another Message
                   </Button>
                 </div>
@@ -111,80 +117,28 @@ export function Contact() {
                 <form onSubmit={handleSubmit} className="space-y-5">
                   <div className="grid sm:grid-cols-2 gap-4">
                     <div className="space-y-2">
-                      <label htmlFor="firstName" className="text-sm font-medium text-foreground">
-                        First Name
-                      </label>
-                      <Input
-                        id="firstName"
-                        required
-                        placeholder="John"
-                        className="bg-background border-border focus:ring-primary"
-                      />
+                      <label htmlFor="firstName" className="text-sm font-medium">First Name</label>
+                      <Input id="firstName" name="firstName" required placeholder="John" />
                     </div>
                     <div className="space-y-2">
-                      <label htmlFor="lastName" className="text-sm font-medium text-foreground">
-                        Last Name
-                      </label>
-                      <Input
-                        id="lastName"
-                        required
-                        placeholder="Doe"
-                        className="bg-background border-border focus:ring-primary"
-                      />
+                      <label htmlFor="lastName" className="text-sm font-medium">Last Name</label>
+                      <Input id="lastName" name="lastName" required placeholder="Doe" />
                     </div>
                   </div>
-
                   <div className="space-y-2">
-                    <label htmlFor="phone" className="text-sm font-medium text-foreground">
-                      Phone Number
-                    </label>
-                    <Input
-                      id="phone"
-                      type="tel"
-                      placeholder="0426 291 113"
-                      className="bg-background border-border focus:ring-primary"
-                    />
+                    <label htmlFor="phone" className="text-sm font-medium">Phone</label>
+                    <Input id="phone" name="phone" type="tel" placeholder="0426 291 113" />
                   </div>
-
                   <div className="space-y-2">
-                    <label htmlFor="email" className="text-sm font-medium text-foreground">
-                      Email Address
-                    </label>
-                    <Input
-                      id="email"
-                      type="email"
-                      required
-                      placeholder="john@example.com"
-                      className="bg-background border-border focus:ring-primary"
-                    />
+                    <label htmlFor="email" className="text-sm font-medium">Email</label>
+                    <Input id="email" name="email" type="email" required placeholder="john@example.com" />
                   </div>
-
                   <div className="space-y-2">
-                    <label htmlFor="message" className="text-sm font-medium text-foreground">
-                      Your Message
-                    </label>
-                    <Textarea
-                      id="message"
-                      required
-                      placeholder="Tell us about your project requirements..."
-                      rows={5}
-                      className="bg-background border-border focus:ring-primary resize-none"
-                    />
+                    <label htmlFor="message" className="text-sm font-medium">Message</label>
+                    <Textarea id="message" name="message" required placeholder="Project details..." rows={5} />
                   </div>
-
-                  <Button
-                    type="submit"
-                    size="lg"
-                    className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold h-12"
-                    disabled={isSubmitting}
-                  >
-                    {isSubmitting ? (
-                      "Sending..."
-                    ) : (
-                      <span className="flex items-center gap-2">
-                        Send Message <Send className="h-4 w-4" />
-                      </span>
-                    )}
+                  <Button type="submit" size="lg" className="w-full" disabled={isSubmitting}>
+                    {isSubmitting ? "Sending..." : <span className="flex items-center gap-2">Send Message <Send className="h-4 w-4" /></span>}
                   </Button>
                 </form>
               )}
