@@ -109,7 +109,7 @@ export function Navbar() {
               <div className="px-4 pt-4 space-y-3 border-t border-border">
                 <a href="tel:+1234567890" className="flex items-center gap-2 text-foreground">
                   <Phone className="h-4 w-4" />
-                  <span>(123) 456-7890</span>
+                  <span>0426 291 113</span>
                 </a>
                 <Button onClick={() => scrollToSection("#contact")} className="w-full bg-primary hover:bg-primary/90 text-primary-foreground">
                   Get Free Quote
