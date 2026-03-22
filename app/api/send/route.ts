@@ -10,9 +10,9 @@ export async function POST(req: Request) {
 
     // Email bhejte waqt await lagana zaroori hai
     const { data, error } = await resend.emails.send({
-      from: 'Landscaping Inquiry <onboarding@resend.dev>',
-      to: ['info@unbeatablelandscapingandconstruction.com'],
-      subject: `New Lead from ${firstName} ${lastName}`,
+      from:  'Landscaping Inquiry <info@unbeatablelandscapingandconstruction.com.au>',
+      to: ['info@unbeatablelandscapingandconstruction.com.au'],
+      subject: `New Inquiry from: ${firstName} ${lastName}`,
       html: `
         <h3>New Inquiry Details:</h3>
         <p><strong>Name:</strong> ${firstName} ${lastName}</p>
