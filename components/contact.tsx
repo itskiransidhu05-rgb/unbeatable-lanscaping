@@ -108,8 +108,8 @@ export function Contact() {
                   <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
                     <CheckCircle2 className="h-8 w-8 text-primary" />
                   </div>
-                  <h3 className="text-2xl font-bold text-foreground mb-3">Thank You!</h3>
-                  <p className="text-muted-foreground mb-6">Your message has been received.</p>
+                  <h3 className="text-2xl font-bold text-foreground mb-3">Thank You for contacting Unbeatable Landscaping & Construction.</h3>
+                  <p className="text-muted-foreground mb-6">Our team will review your request and get in touch with you shortly.</p>
                   <Button variant="outline" onClick={() => setIsSubmitted(false)}>
                     Send Another Message
                   </Button>

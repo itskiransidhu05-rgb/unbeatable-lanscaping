@@ -11,7 +11,7 @@ export async function POST(req: Request) {
     // Email bhejte waqt await lagana zaroori hai
     const { data, error } = await resend.emails.send({
       from: 'Landscaping Inquiry <onboarding@resend.dev>',
-      to: ['itskiransidhu05@gmail.com'],
+      to: ['info@unbeatablelandscapingandconstruction.com'],
       subject: `New Lead from ${firstName} ${lastName}`,
       html: `
         <h3>New Inquiry Details:</h3>
