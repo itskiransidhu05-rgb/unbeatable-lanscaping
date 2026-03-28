@@ -27,10 +27,11 @@ const services = [
   "Turf",
   "Modern Boundary Walls",
   "Contemporary Timber edging",
+  "Concrete & Steps",
 ]
 
 const socialLinks = [
-  { icon: Facebook, href: "#", label: "Facebook" },
+  { icon: Facebook, href: "https://www.facebook.com/share/17F8vbmb9N/?mibextid=wwXIfr", label: "Facebook" },
   { icon: Instagram, href: "#", label: "Instagram" },
 ]
 
