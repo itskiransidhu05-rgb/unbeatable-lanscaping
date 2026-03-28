@@ -41,11 +41,15 @@ const projects = [
     id: 3,
     title: "Decking", // Fixed: Removed extra space before 'Decking'
     category: "Decking",
-    thumbnail: "images/images1/front yard landscaping.jpeg",
+    thumbnail: "images/de8.jpeg",
     images: [
+      "images/de8.jpeg",
       "images/deck2.jpeg",
-      "images/images1/front yard landscaping.jpeg",
-      "images/decking1.jpeg",
+      "images/de9.jpeg",
+      "images/de3.jpeg",
+      "images/de4.jpeg",
+      "images/de5.jpeg",
+      
       "images/deck1.jpeg",
     ],
     description: " Engineered a premium outdoor living platform using high-grade, weather-resistant materials to extend the home’s footprint. From the initial structural framing to the final oiling, our focus remained on precision and durability. This custom deck serves as a versatile entertainment zone, featuring a hidden-fastening system for a clean, professional finish that complements the surrounding landscape.",
@@ -161,6 +165,21 @@ const projects = [
     thumbnail: "images/images1/contemporary garden framing.jpeg",
     images: ["images/timber1.jpeg", "images/images1/contemporary garden framing.jpeg", "images/timber2.jpeg"],
     description: "Sculpted clean, architectural lines throughout the landscape by installing premium, pressure-treated timber edging.",
+  },
+  {
+    id:15,
+    title: "Concrete & Steps",
+    category: "Construction",
+    thumbnail: "images/concrete4.jpeg",
+    images:
+    [
+      "images/concrete1.jpeg",
+      "images/concrete10.jpeg",
+      "images/concrete2.jpeg",
+      "images/concrete4.jpeg",
+      "images/concrete9.jpeg",
+    ],
+    description:"Our expertise in high-quality concrete and custom step installations ensures that your property’s entrance is both durable and visually striking. We specialize in delivering high-strength, weather-resistant concrete solutions for driveways and pathways, prioritizing structural integrity with a solid sub-base to prevent future cracking or shifting. Every project is executed with precision, focusing on expert leveling and proper drainage to guarantee long-term stability. From smooth modern finishes to safe, non-slip textured surfaces, our custom-designed steps are crafted to blend seamlessly with your existing landscape while significantly enhancing your home’s overall curb appeal and functional value.",
   },
 ]
 
