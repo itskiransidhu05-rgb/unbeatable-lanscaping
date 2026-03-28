@@ -101,15 +101,18 @@ export function Services() {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service) => (
             <Card
+            
               key={service.id}
               className="group overflow-hidden border-border hover:border-primary/50 transition-all duration-300 hover:shadow-xl cursor-pointer bg-card"
               onClick={() => setSelectedService(service)}
             >
-              <div className="relative h-56 overflow-hidden">
+              <div className="relative h-56 overflow-hidden transform-gpu will-change-transform">
                 <Image
                   src={service.image}
                   alt={service.title}
                   fill
+                  priority={service.id <= 3}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   className="object-cover group-hover:scale-110 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 to-transparent" />

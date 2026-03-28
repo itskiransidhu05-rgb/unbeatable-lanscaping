@@ -193,16 +193,13 @@ const projects = [
 const categories = ["All", "Landscaping", "Decking", "Construction"]
 
 export function Projects() {
-  const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null)
+  const [selectedProject, setSelectedProject] = useState<any>(null)
   const [activeFilter, setActiveFilter] = useState("All")
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
 
-  // --- NEW: FOOTER INTEGRATION LOGIC ---
   useEffect(() => {
     const handleOpenModal = (event: any) => {
       const serviceTitleFromFooter = event.detail;
-      
-      // Projects list mein match dhoondhna (Trim and lowercase for safety)
       const projectMatch = projects.find(
         (p) => p.title.trim().toLowerCase() === serviceTitleFromFooter.trim().toLowerCase()
       );
@@ -210,14 +207,13 @@ export function Projects() {
       if (projectMatch) {
         setSelectedProject(projectMatch);
         setCurrentImageIndex(0);
-        setActiveFilter("All"); // Modal khulne par filter hatana taaki background sahi dikhe
+        setActiveFilter("All");
       }
     };
 
     window.addEventListener("openProjectModal", handleOpenModal);
     return () => window.removeEventListener("openProjectModal", handleOpenModal);
   }, []);
-  // -------------------------------------
 
   const filteredProjects = activeFilter === "All"
     ? projects
@@ -244,47 +240,53 @@ export function Projects() {
       <div className="container mx-auto px-4 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-12">
           <p className="text-primary font-semibold mb-3 uppercase tracking-wider text-sm">Our Portfolio</p>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6 text-balance">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6">
             Featured Projects
           </h2>
-          <p className="text-muted-foreground text-lg leading-relaxed">
+          <p className="text-muted-foreground text-lg">
             Explore our recent work and see how we've transformed properties.
           </p>
         </div>
 
+        {/* Filter Buttons */}
         <div className="flex flex-wrap justify-center gap-3 mb-12">
           {categories.map((category) => (
             <Button
               key={category}
               variant={activeFilter === category ? "default" : "outline"}
               onClick={() => setActiveFilter(category)}
-              className={activeFilter === category 
-                ? "bg-primary text-primary-foreground" 
-                : "border-border hover:bg-primary hover:text-primary-foreground"
-              }
+              className="transition-all duration-200"
             >
               {category}
             </Button>
           ))}
         </div>
 
+        {/* Projects Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredProjects.map((project) => (
+          {filteredProjects.map((project, idx) => (
             <div
               key={project.id}
-              className="group relative overflow-hidden rounded-xl cursor-pointer bg-card shadow-md hover:shadow-xl transition-all duration-300"
+              // ADDED: transform-gpu to ensure smooth hover and entry
+              className="group relative overflow-hidden rounded-xl cursor-pointer bg-card shadow-md hover:shadow-xl transition-all duration-300 transform-gpu"
               onClick={() => {
                 setSelectedProject(project)
                 setCurrentImageIndex(0)
               }}
             >
-              <div className="relative h-72 overflow-hidden">
+              {/* Image Container */}
+              <div className="relative h-72 overflow-hidden transform-gpu will-change-transform">
                 <Image
-                  src={`/${project.thumbnail}`} // Added leading slash for reliability
+                  src={`/${project.thumbnail}`}
                   alt={project.title}
                   fill
-                  className="object-cover group-hover:scale-110 transition-transform duration-500"
+                  // OPTIMIZATION: Priority for the first few images
+                  priority={idx < 3}
+                  // OPTIMIZATION: Tells browser exactly how much to load
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  className="object-cover group-hover:scale-110 transition-transform duration-700 transform-gpu"
                 />
+                
                 <div className="absolute inset-0 bg-gradient-to-t from-foreground/80 via-transparent to-transparent opacity-60" />
                 
                 <div className="absolute top-4 left-4">
@@ -297,7 +299,7 @@ export function Projects() {
                   <h3 className="text-xl font-bold">{project.title}</h3>
                 </div>
                 
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <span className="bg-background text-foreground px-6 py-3 rounded-full font-semibold flex items-center gap-2">
                     View Project <ArrowRight className="h-4 w-4" />
                   </span>
@@ -308,57 +310,52 @@ export function Projects() {
         </div>
       </div>
 
+      {/* Project Detail Modal */}
       <Dialog open={!!selectedProject} onOpenChange={() => setSelectedProject(null)}>
-        <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto bg-card">
+        <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto bg-card transform-gpu">
           <DialogHeader>
-            <DialogTitle className="text-2xl font-bold text-foreground">{selectedProject?.title}</DialogTitle>
+            <DialogTitle className="text-2xl font-bold">{selectedProject?.title}</DialogTitle>
           </DialogHeader>
           
           {selectedProject && (
             <div className="space-y-6">
-              <div className="relative h-64 md:h-96 rounded-lg overflow-hidden bg-muted">
+              {/* Carousel Image Container */}
+              <div className="relative h-64 md:h-96 rounded-lg overflow-hidden bg-muted transform-gpu will-change-transform">
                 <Image
-                  src={`/${selectedProject.images[currentImageIndex]}`} // Added leading slash
-                  alt={`${selectedProject.title} - Image ${currentImageIndex + 1}`}
+                  src={`/${selectedProject.images[currentImageIndex]}`}
+                  alt={selectedProject.title}
                   fill
-                  className="object-cover"
+                  className="object-cover transition-opacity duration-500"
+                  // Modal images should be high quality but optimized
+                  sizes="(max-width: 1024px) 100vw, 800px"
                 />
                 
                 {selectedProject.images.length > 1 && (
                   <>
                     <button
                       onClick={(e) => { e.stopPropagation(); prevImage() }}
-                      className="absolute left-4 top-1/2 -translate-y-1/2 bg-background/80 hover:bg-background text-foreground p-2 rounded-full transition-colors z-10"
+                      className="absolute left-4 top-1/2 -translate-y-1/2 bg-background/80 hover:bg-background text-foreground p-2 rounded-full transition-all z-10 active:scale-90"
                     >
                       <ChevronLeft className="h-6 w-6" />
                     </button>
                     <button
                       onClick={(e) => { e.stopPropagation(); nextImage() }}
-                      className="absolute right-4 top-1/2 -translate-y-1/2 bg-background/80 hover:bg-background text-foreground p-2 rounded-full transition-colors z-10"
+                      className="absolute right-4 top-1/2 -translate-y-1/2 bg-background/80 hover:bg-background text-foreground p-2 rounded-full transition-all z-10 active:scale-90"
                     >
                       <ChevronRight className="h-6 w-6" />
                     </button>
-                    
-                    <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
-                      {selectedProject.images.map((_, index) => (
-                        <button
-                          key={index}
-                          onClick={(e) => { e.stopPropagation(); setCurrentImageIndex(index) }}
-                          className={`w-2 h-2 rounded-full transition-colors ${
-                            index === currentImageIndex ? "bg-primary" : "bg-background/60"
-                          }`}
-                        />
-                      ))}
-                    </div>
                   </>
                 )}
               </div>
               
-              <div>
-                <div className="inline-block bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-medium mb-3">
+              {/* Description & Buttons */}
+              <div className="space-y-4">
+                <div className="inline-block bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-medium">
                   {selectedProject.category}
                 </div>
-                <p className="text-muted-foreground leading-relaxed">{selectedProject.description}</p>
+                <p className="text-muted-foreground leading-relaxed">
+                  {selectedProject.description}
+                </p>
               </div>
               
               <div className="flex gap-4 pt-4">

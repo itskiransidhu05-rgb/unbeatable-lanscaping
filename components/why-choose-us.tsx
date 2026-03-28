@@ -1,7 +1,11 @@
-import { Shield, Clock, Award, Users, ThumbsUp } from "lucide-react"
+import { Shield,BadgeCheck, Clock, Award, Users, ThumbsUp } from "lucide-react"
 
 const reasons = [
-  
+  {
+    icon:BadgeCheck,
+    title:"Premium Grade Sourcing",
+    description:"We source only the highest quality materials—from sustainable Australian hardwoods to premium stone aggregates—ensuring a high-end finish that stands up to the elements.",
+  },
   {
     icon: Clock,
     title: "On-Time Completion",
