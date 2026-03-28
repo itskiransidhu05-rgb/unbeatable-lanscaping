@@ -20,7 +20,7 @@ const services = [
     title: "Landscaping",
     shortDesc: "Enhancing your home’s curb appeal through a thoughtful blend of plants, hardscaping, and design.",
     image: "/images/images1/frontyard landscaping.jpeg",
-    fullDesc: "Transforming your yard into a welcoming landscape balances aesthetic beauty with functional design to enhance your home’s curb appeal...",
+    fullDesc: "Transforming your yard into a welcoming landscape balances aesthetic beauty with functional design to enhance your home’s curb appeal. By integrating a mix of vibrant perennial plants, structured hardscaping like stone pathways, and soft ambient lighting, you can create a space that feels both polished and inviting. A well-planned front yard not only serves as a beautiful first impression for guests but also adds significant value and character to your entire property.",
     features: ["Softscaping", "Hardscaping", "Lighting & Irrigation", "Acoustic & Visual Focal Points", "Ground Cover"],
   },
   {
@@ -34,7 +34,7 @@ const services = [
       "/images/de7.jpeg",
       "/images/de1.jpeg",
     ],
-    fullDesc: "Quality decking serves as a versatile outdoor extension of your living space...",
+    fullDesc: "Quality decking serves as a versatile outdoor extension of your living space, providing a durable and level foundation for relaxation, dining, and social gatherings. By integrating premium materials like natural timber or low-maintenance composites, a well-crafted deck seamlessly bridges the gap between your home’s interior and the surrounding landscape.",
     features: ["Decking Surface", "Access & Stairs", "Railing", "Decking Lighting"],
   },
   {
@@ -42,7 +42,7 @@ const services = [
     title: "Hardscape Construction",
     shortDesc: "Patios, walkways, retaining walls, and outdoor living spaces.",
     image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=800&auto=format&fit=crop",
-    fullDesc: "Transform your outdoor area with beautiful and durable hardscape features...",
+    fullDesc: "Transform your outdoor area with beautiful and durable hardscape features. Our skilled craftsmen create stunning patios, elegant walkways, and functional retaining walls using premium materials.",
     features: ["Paver Patios", "Stone Walkways", "Retaining Walls", "Fire Pits", "Outdoor Kitchens"],
   },
   {
@@ -50,7 +50,7 @@ const services = [
     title: "Fencing",
     shortDesc: "Enhancing your home’s security and privacy with stylish, durable boundary solutions.",
     image: "/images/images1/modern fencing.jpeg",
-    fullDesc: "Our premium fencing solutions provide the perfect balance of security, privacy, and curb appeal.",
+    fullDesc: "Our premium fencing solutions provide the perfect balance of security, privacy, and curb appeal. Whether you prefer the classic look of natural wood, the modern durability of vinyl, or the sleek strength of ornamental metal, we design and install custom boundaries that complement your home's architecture.",
     features: ["Custom Design", "Premium Materials", "Robust Framework", "Finishing", "Cleanup"],
   },
   {
@@ -59,7 +59,7 @@ const services = [
     // FIXED: Removed brackets [] from shortDesc
     shortDesc: "We specialize in high-strength reinforced concrete and custom-engineered steps designed for maximum durability and modern curb appeal.",
     image: "/images/concrete4.jpeg",
-    fullDesc: "Our Concrete and Custom Step solutions combine high-strength engineering with modern design to enhance your property's durability...",
+    fullDesc: "Our Concrete and Custom Step solutions combine high-strength engineering with modern design to enhance your property's durability and curb appeal. From professional site excavation and compacted sub-base preparation to the final pour of reinforced concrete, we ensure every surface is built to prevent shifting and handle heavy traffic. Whether you prefer a slip-resistant broom finish, decorative exposed aggregate, or a sleek smooth trowel look, our custom-engineered steps are built to strict safety codes with precise leveling for optimal water drainage. We deliver a seamless, long-lasting finish that provides both structural integrity and a premium look for your driveways, pathways, and entrances.",
     features: ["Driveways and Pathways", "Custom Entrance Steps", "Decorative Finishes", "Retaining Walls", "Drainage Solutions", "Reinforcement & Curing"],
   },
   {
@@ -67,7 +67,7 @@ const services = [
     title: "Residential Construction",
     shortDesc: "Home additions, renovations, and new construction projects.",
     image: "/images/images1/residential landscaping.jpeg",
-    fullDesc: "Build your dream home or expand your current one with our residential construction services.",
+    fullDesc: "Build your dream home or expand your current one with our residential construction services. Our experienced team handles everything from foundation to finish with attention to detail and quality craftsmanship.",
     features: ["Home Additions", "Remodels", "Basement Finishing", "Deck & Porch", "Garage Building"],
   },
   {
@@ -75,7 +75,7 @@ const services = [
     title: "Garden & Lawn Design",
     shortDesc: "Creating a lush, harmonious outdoor environment that balances greenery with functional spaces.",
     image: "/images/images1/modern garden design.jpeg",
-    fullDesc: "Transforming your outdoor space with a professional garden and lawn design blends lush greenery with functional areas.",
+    fullDesc: "Transforming your outdoor space with a professional garden and lawn design blends lush greenery with functional open areas. We integrate premium turf, seasonal plantings, and efficient irrigation to create a vibrant, year-round landscape. Our designs focus on sustainable, low-maintenance beauty that perfectly complements your home’s architecture and boosts its overall value.",
     features: ["Premium Turf", "Artistic Bordering", "Seasonal Strategy", "Custom Planning"],
   },
 ]
