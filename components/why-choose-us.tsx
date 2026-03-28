@@ -1,11 +1,7 @@
 import { Shield, Clock, Award, Users, ThumbsUp } from "lucide-react"
 
 const reasons = [
-  {
-    icon: Shield,
-    title: "Licensed & Insured",
-    description: "Fully licensed and insured for your peace of mind. We meet all industry standards and regulations.",
-  },
+  
   {
     icon: Clock,
     title: "On-Time Completion",

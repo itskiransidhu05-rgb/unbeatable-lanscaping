@@ -26,8 +26,8 @@ const services = [
     id: 2,
     title: "Decking",
     shortDesc: "A versatile outdoor platform that expands your living space while providing a seamless transition between your home and the natural landscape.",
-    thumbnail: "images/de2.jpeg",
-    images:
+    image: "images/de2.jpeg",
+    gallery:
     [
       "images/de2.jpeg",
       "images/de6.jpeg",
@@ -56,7 +56,7 @@ const services = [
   {
     id:5,
     title:"Concrete & Steps",
-    shortDesc: ["We specialize in high-strength reinforced concrete and custom-engineered steps designed for maximum durability and modern curb appeal. Our expert team handles every stage from site excavation to precision leveling, ensuring perfect water drainage and a seamless, high-quality finish. Whether you choose decorative aggregate or a slip-resistant surface, we deliver a safe and professional entrance for your home."],
+    shortDesc: "We specialize in high-strength reinforced concrete and custom-engineered steps designed for maximum durability and modern curb appeal. Our expert team handles every stage from site excavation to precision leveling, ensuring perfect water drainage and a seamless, high-quality finish. Whether you choose decorative aggregate or a slip-resistant surface, we deliver a safe and professional entrance for your home.",
     image: "images/concrete4.jpeg",
     fullDesc:"Our Concrete and Custom Step solutions combine high-strength engineering with modern design to enhance your property's durability and curb appeal. From professional site excavation and compacted sub-base preparation to the final pour of reinforced concrete, we ensure every surface is built to prevent shifting and handle heavy traffic. Whether you prefer a slip-resistant broom finish, decorative exposed aggregate, or a sleek smooth trowel look, our custom-engineered steps are built to strict safety codes with precise leveling for optimal water drainage. We deliver a seamless, long-lasting finish that provides both structural integrity and a premium look for your driveways, pathways, and entrances.",
     features:["Driveways and Pathways","Custom Entrance Steps","Decorative Finishes","Retainining Walls & Edging","Drainage Solutions","Reinforcement & Curing"],
